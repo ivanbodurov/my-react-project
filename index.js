@@ -46,6 +46,7 @@ const fragment = (
 	<>
 		<p><b>First paragraph.</b></p>
 		<p><b>Second paragraph.</b></p>
+		<p><b>Third paragraph.</b></p>
 	</>
 );
 // Elements Must be Closed and to add a class use 'className' instead of 'class',
