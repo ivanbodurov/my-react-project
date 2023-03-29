@@ -32,6 +32,8 @@ const list = (
 		<li>Bananas</li>
 		<li>Cherries</li>
 		<li>Oranges</li>
+		<li>Plums</li>
+		<li>Peaches</li>
 	</ul>
 );
 //top level element: '<div>'
