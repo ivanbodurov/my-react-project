@@ -23,6 +23,9 @@ const element = (
 		<tr>
 			<td>Dana</td>
 		</tr>
+		<tr>
+			<td>Rufus</td>
+		</tr>
 	</table>
 );
 // jsx > expression
