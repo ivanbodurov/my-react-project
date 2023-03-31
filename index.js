@@ -1,7 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import {name, age} from './person.js';
 import message from './message.js';
+import Boat from './Boat.js';
 
 const myFirstElement = <h1>Hello React!</h1>;
 const mySecondElement = <h2>Hello ReactJS!</h2>;
@@ -49,7 +50,7 @@ const topLevelEl = (
 		<p>Second paragraph.</p>
 	</div>
 );
-// fragment <></>
+// fragment <> </>
 const fragment = (
 	<>
 		<p><b>First paragraph.</b></p>
@@ -70,8 +71,31 @@ if (myNum > 2) {
 const element3 = <h1>{text}</h1>;
 const element4 = <h1>{(myNum < 44) ? "Hello" : "Bye"}</h1>;
 
+//React Components
+//class component
+class House extends React.Component {
+	render() {
+		return <h2>Hi, I am a House!</h2>;
+	}
+}
+//function component with prop
+function Plane(props) {
+	return <h2>Hi, I am a {props.color} plane!</h2>;
+}
+//component in component
+function Garage() {
+	return (
+		<>
+			<p>Who lives in my garage?</p>
+			<Plane />
+		</>
+	);
+}
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(element4);
+root.render(<Boat type="motor" />);
+
 
 
 
