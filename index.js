@@ -80,21 +80,35 @@ class House extends React.Component {
 }
 //function component with prop
 function Plane(props) {
-	return <h2>Hi, I am a {props.color} plane!</h2>;
+	return <h2>Hi, I am a {props.color} plane {props.brand}!</h2>;
 }
-//component in component
+
+//React Props
+const colorValue = "green";
+const brandValue = "Airbus A320";
+let boatFeature = {
+	type: 'motor',
+	color: 'white'
+}
+
+const myPlane = <Plane color={colorValue} brand={brandValue} />
+const myBoat = <Boat feature={boatFeature} feature={boatFeature} />
+//component in component, pass data
 function Garage() {
 	return (
 		<>
 			<p>Who lives in my garage?</p>
-			<Plane />
+			{myPlane}
+			{myBoat}
 		</>
 	);
 }
 
 
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Boat type="motor" />);
+root.render(<Garage />);
 
 
 
