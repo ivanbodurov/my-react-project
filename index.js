@@ -92,7 +92,7 @@ let boatFeature = {
 }
 
 const myPlane = <Plane color={colorValue} brand={brandValue} />
-const myBoat = <Boat feature={boatFeature} feature={boatFeature} />
+const myBoat = <Boat feature={boatFeature} />
 //component in component, pass data
 function Garage() {
 	return (
