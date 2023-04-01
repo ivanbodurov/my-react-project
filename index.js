@@ -104,14 +104,33 @@ function Garage() {
 	);
 }
 
-
-
+////React Events
+const InvestMarket = () => {
+	const buyBTC = () => {
+		alert("Congrats! You have bought Bitcoin.");
+	}
+	const buyXMR = (msg) => {
+		alert(msg);
+	}
+	const buyMSFT = (msg, b) => {
+		alert(msg);
+		alert("Event: " + b.type);
+	}
+	return (
+		<>
+			<button onClick={buyBTC}>Buy BTC</button>
+			<br />
+			<br />
+			<button onClick={() => buyXMR("Congrats! You have bought Monero.")}>Buy XMR</button>
+			<br />
+			<br />
+			<button onMouseOver={(event) => buyMSFT("Congrats! You have bought MSFT stocks.", event)}>Buy MSFT</button>
+		</>
+	);
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Garage />);
-
-
-
+root.render(<InvestMarket />);
 
 //ES6 Overview
 class Car {
