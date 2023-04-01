@@ -4,6 +4,7 @@ import {name, age} from './person.js';
 import message from './message.js';
 import Boat from './Boat.js';
 import Motor from './Motor.js';
+import Sportcar from './Sportcar.js';
 
 
 const myFirstElement = <h1>Hello React!</h1>;
@@ -100,6 +101,7 @@ const motorFeature = {
 const myPlane = <Plane color={planeColorValue} brand={planeBrandValue} />
 const myBoat = <Boat feature={boatFeature} />
 const myMotor = <Motor feature={motorFeature} />;
+const mySportcar = <Sportcar brand="Corvette" />;
 //component in component, pass data
 function Garage() {
 	return (
@@ -108,6 +110,7 @@ function Garage() {
 			{myPlane}
 			{myBoat}
 			{myMotor}
+			{mySportcar}
 		</>
 	);
 }
