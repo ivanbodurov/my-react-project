@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom/client';
 import {name, age} from './person.js';
 import message from './message.js';
 import Boat from './Boat.js';
+import Motor from './Motor.js';
+import Sportcar from './Sportcar.js';
+
 
 const myFirstElement = <h1>Hello React!</h1>;
 const mySecondElement = <h2>Hello ReactJS!</h2>;
@@ -84,15 +87,22 @@ function Plane(props) {
 }
 
 //React Props
-const colorValue = "green";
-const brandValue = "Airbus A320";
-let boatFeature = {
+const planeColorValue = "green";
+const planeBrandValue = "Airbus A320";
+const boatFeature = {
 	type: 'motor',
 	color: 'white'
 }
+const motorFeature = {
+	brand: "Ducati",
+	color: "red"
+}
 
-const myPlane = <Plane color={colorValue} brand={brandValue} />
+const myPlane = <Plane color={planeColorValue} brand={planeBrandValue} />
 const myBoat = <Boat feature={boatFeature} />
+const myMotor = <Motor feature={motorFeature} />;
+const mySportcar = <Sportcar brand="Corvette" />;
+
 //component in component, pass data
 function Garage() {
 	return (
@@ -100,6 +110,8 @@ function Garage() {
 			<p>Who lives in my garage?</p>
 			{myPlane}
 			{myBoat}
+			{myMotor}
+			{mySportcar}
 		</>
 	);
 }
