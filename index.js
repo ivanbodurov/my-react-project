@@ -223,7 +223,7 @@ class Header {
     this.number = 'PB 1234 BP';
   }
 
-  // With a regular function, this represents the object that called the function:
+  // With a regular function, 'this' represents the object that called the function:
   changeColor = function() {
     console.log(this);
   }
