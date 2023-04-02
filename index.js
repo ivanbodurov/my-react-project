@@ -228,7 +228,7 @@ class Header {
     console.log(this);
   }
 
-  // With an arrow function, the keyword 'this' represents the Header class NO matter who called the function:
+  // With an arrow function, the keyword 'this' represents the Header class, NO matter who called the function:
   changeNumber = () => console.log(this);
 
 }
