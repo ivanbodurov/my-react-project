@@ -1,6 +1,7 @@
 import React from 'react';
+import { useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import {name, age} from './person.js';
+import { name, age } from './person.js';
 import message from './message.js';
 import Boat from './Boat.js';
 import Motor from './Motor.js';
@@ -108,7 +109,7 @@ function Vehicle(props) {
 	return <li>I am a {props.type}</li>;
 }
 function Garage() {
-	const vehicleCollection = [
+	const vehicleType = [
 		{id: 1, type: 'car'},
 		{id: 2, type: 'truck'},
 		{id: 3, type: 'helicopter'},
@@ -120,7 +121,7 @@ function Garage() {
 		<>
 			<p>Who lives in my garage?</p>
 			<ul>
-				{vehicleCollection.map((item) => <Vehicle key={item.id} type={item.type} />)}
+				{vehicleType.map((item) => <Vehicle key={item.id} type={item.type} />)}
 			</ul>
 			{myPlane}
 			{myBoat}
@@ -193,10 +194,69 @@ function CryptoCollection(props) {
 }
 const collection = ['Bitcoin', 'Monero', 'Cardano', 'Solana', 'Litecoin'];
 
+//React Forms
+function MyForm() {
+	const [name, setName] = useState("");
+	const [inputs, setInputs] = useState({});
+	const [textarea, setTextarea] = useState("The content of a textarea goes in the value='' attribute");
+	const [myCrypto, setMyCrypto] = useState("ADA");
+
+	const handleChange = (event) => {
+		const name = event.target.name;
+		const value = event.target.value;
+		setInputs((values) => ({...values, [name]: value}));
+		setTextarea((values) => ({...values, [name]: value}));
+		setMyCrypto((values) => ({...values, [name]: value}));
+		// setTextarea(event.target.value);
+		// setMyCrypto(event.target.value);
+
+	}
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		//alert(`The name you entered was: ${name}`);
+		console.log(`The username you entered was: ${inputs.username}`);
+		console.log(`The age was: ${inputs.age}`);
+		console.log(`The message was: ${textarea.message}`);
+		console.log(`The choosen cryptocurrency is ${myCrypto.cryptoList}`);
+	}
+
+	return (
+		<form onSubmit={handleSubmit}>
+			<label>Enter your username:</label><br />
+			<input type="text"
+				name="username"
+ 				value={inputs.username || ""}
+				onChange={handleChange}
+			/><br /><br />
+			<label>Enter your age:</label><br />
+			<input
+			 	type="number"
+				name="age"
+				value={inputs.age || ""}
+				onChange={handleChange}
+				 /><br /><br />
+			<label>Enter your message:</label><br />
+			<textarea
+			  name="message"
+			  value={textarea.message || ""}
+			  onChange={handleChange}
+				 /><br /><br />
+				 <label>Choose your cryptocurrency:</label><br />
+				 <select name="cryptoList" value={myCrypto.cryptoList || ""} onChange={handleChange}>
+				 <option value="">Choose crypto..</option>
+				 	<option value="BTC">Bitcoin</option>
+					<option value="XMR">Monero</option>
+					<option value="ADA">Cardano</option>
+					<option value="SOL">Solana</option>
+				 </select><br /><br />
+			<input type="submit" />
+		</form>
+	);
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-//root.render(<Connection status={true} />);
-root.render(<Garage />);
+root.render(<MyForm />);
 
 //ES6 Overview
 class Car {
