@@ -103,11 +103,25 @@ const myBoat = <Boat feature={boatFeature} />
 const myMotor = <Motor feature={motorFeature} />;
 const mySportcar = <Sportcar brand="Corvette" />;
 
-//component in component, pass data
+//component in component, pass data, lists
+function Vehicle(props) {
+	return <li>I am a {props.type}</li>;
+}
 function Garage() {
+	const vehicleCollection = [
+		{id: 1, type: 'car'},
+		{id: 2, type: 'truck'},
+		{id: 3, type: 'helicopter'},
+		{id: 4, type: 'private jet'},
+		{id: 5, type: 'buggy'},
+		{id: 6, type: 'car'}
+	];
 	return (
 		<>
 			<p>Who lives in my garage?</p>
+			<ul>
+				{vehicleCollection.map((item) => <Vehicle key={item.id} type={item.type} />)}
+			</ul>
 			{myPlane}
 			{myBoat}
 			{myMotor}
@@ -181,9 +195,8 @@ const collection = ['Bitcoin', 'Monero', 'Cardano', 'Solana', 'Litecoin'];
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-//root.render(<Garage />);
-root.render(<Connection status={true} />);
-
+//root.render(<Connection status={true} />);
+root.render(<Garage />);
 
 //ES6 Overview
 class Car {
