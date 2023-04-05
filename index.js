@@ -255,6 +255,7 @@ function MyForm() {
 	);
 }
 
+//This is new branch 'html-skeleton' by Github.
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MyForm />);
 
