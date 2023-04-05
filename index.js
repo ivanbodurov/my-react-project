@@ -1,11 +1,17 @@
 import React from 'react';
-import { useState } from 'react';
 import ReactDOM from 'react-dom/client';
+import { useState } from 'react';
 import { name, age } from './person.js';
 import message from './message.js';
 import Boat from './Boat.js';
 import Motor from './Motor.js';
 import Sportcar from './Sportcar.js';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
+import Blogs from "./pages/Blogs";
+import Contact from "./pages/Contact";
+import NoPage from "./pages/NoPage";
 
 
 const myFirstElement = <h1>Hello React!</h1>;
@@ -244,7 +250,7 @@ function MyForm() {
 				 /><br /><br />
 				 <label>Choose your cryptocurrency:</label><br />
 				 <select name="cryptoList" value={myCrypto.cryptoList || ""} onChange={handleChange}>
-				 <option value="">Choose crypto..</option>
+				 	<option value="">Choose crypto..</option>
 				 	<option value="BTC">Bitcoin</option>
 					<option value="XMR">Monero</option>
 					<option value="ADA">Cardano</option>
@@ -255,8 +261,23 @@ function MyForm() {
 	);
 }
 
+export default function App() {
+	return (
+		<BrowserRouter>
+			<Routes>
+				<Route path="/" element={<Layout />}>
+					<Route index element={<Home />} />
+					<Route path="blogs" element={<Blogs />} />
+					<Route path="contact" element={<Contact />} />
+					<Route path="*" element={<NoPage />} />
+				</Route>
+			</Routes>
+		</BrowserRouter>
+	);
+}
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<MyForm />);
+root.render(<App />);
 
 //ES6 Overview
 class Car {
