@@ -276,6 +276,7 @@ export default function App() {
 	);
 }
 
+//This comment line is to edit the file in 'html-skeleton' branch.
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
 
