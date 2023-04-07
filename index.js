@@ -12,6 +12,7 @@ import Home from "./pages/Home";
 import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
 import NoPage from "./pages/NoPage";
+import Todos from "./Todos";
 
 
 const myFirstElement = <h1>Hello React!</h1>;
@@ -261,6 +262,7 @@ function MyForm() {
 	);
 }
 
+//React Router
 export default function App() {
 	return (
 		<BrowserRouter>
@@ -276,9 +278,36 @@ export default function App() {
 	);
 }
 
+//React Memo
+const TodosApp = () => {
+	const [count, setCount] = useState(0);
+	const [todos, setTodos] = useState(["Take breakfast", "Clean", "Pass tutorial", "Work on affiliate marketing"]);
+
+	const increment = () => {
+		setCount((counter) => counter + 1);
+		console.log(count);
+	};
+
+	return (
+		<>
+			<ul>
+				<Todos todos={todos} />
+			</ul>
+			<hr />
+			<div>
+				Count: {count}
+				<button onClick={increment}>+</button>
+			</div>
+		</>
+	);
+}
+
 //This comment line is to edit the file in 'html-skeleton' branch.
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+root.render(<TodosApp />);
+
+
 
 //ES6 Overview
 class Car {
@@ -319,8 +348,8 @@ class Header {
   }
 
   // With a regular function, the keyword 'this' represents the object that called the function:
-  changeColor = function() {
-    console.log(this);
+	changeColor = function() {
+     console.log(this);
   }
 
   // With an arrow function, the keyword 'this' represents the Header class, NO matter who called the function:
@@ -330,13 +359,13 @@ class Header {
 
 
 const myheader = new Header();
-// The window object calls the function:
-window.addEventListener('load', myheader.changeColor); // logs the 'window' object..
-window.addEventListener('load', myheader.changeNumber); // Logs the Header class
+//// The window object calls the function:
+//window.addEventListener('load', myheader.changeColor); // logs the 'window' object..
+//window.addEventListener('load', myheader.changeNumber); // Logs the Header class
 
-// The document object calls the function:
-document.addEventListener('click', myheader.changeColor); // Logs the #document object.
-document.addEventListener('click', myheader.changeNumber); // Logs the Header class
+//// The document object calls the function:
+//document.addEventListener('click', myheader.changeColor); // Logs the #document object.
+//document.addEventListener('click', myheader.changeNumber); // Logs the Header class
 
 // es6 variables
 if (true) {
