@@ -13,6 +13,8 @@ import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
 import NoPage from "./pages/NoPage";
 import Todos from "./Todos";
+//import './style.css';
+import AiCar from './AiCar';
 
 
 const myFirstElement = <h1>Hello React!</h1>;
@@ -302,10 +304,26 @@ const TodosApp = () => {
 	);
 }
 
+// React CSS Styling
+ const HeaderStyle = () => {
+	 const myStyle = {
+		 color: "white",
+		 backgroundColor: "dodgerBlue",
+		 padding: "10px",
+		 fontFamily: "Sans-Serif"
+	 }
+	 return (
+		 <>
+		 	<h1>Hello Style!</h1>
+			<p>Add a little style!</p>
+		 </>
+	 );
+ }
+
 //This comment line is to edit the file in 'html-skeleton' branch.
 // This comment is from Git Pull Branch from Github..
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<TodosApp />);
+root.render(<AiCar />);
 
 
 
