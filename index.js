@@ -303,7 +303,7 @@ const TodosApp = () => {
 }
 
 //This comment line is to edit the file in 'html-skeleton' branch.
-
+// This comment is from Git Pull Branch from Github..
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<TodosApp />);
 
