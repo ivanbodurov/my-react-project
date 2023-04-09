@@ -14,6 +14,7 @@ import Contact from "./pages/Contact";
 import NoPage from "./pages/NoPage";
 import Todos from "./Todos";
 import AiCar from './AiCar';
+import './my-sass.scss';
 
 
 const myFirstElement = <h1>Hello React!</h1>;
@@ -319,10 +320,20 @@ const TodosApp = () => {
 	 );
  }
 
+ //React Sass Styling
+ const HeaderSass = () => {
+	 return (
+		 <>
+		 	<h1>Hello Sass!</h1>
+			<p>Add a little sass style.</p>
+		 </>
+	 );
+ }
+
 //This comment line is to edit the file in 'html-skeleton' branch.
 // This comment is from Git Pull Branch from Github..
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<AiCar />);
+root.render(<HeaderSass />);
 
 
 
