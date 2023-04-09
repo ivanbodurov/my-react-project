@@ -13,7 +13,6 @@ import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
 import NoPage from "./pages/NoPage";
 import Todos from "./Todos";
-//import './style.css';
 import AiCar from './AiCar';
 
 
