@@ -330,10 +330,26 @@ const TodosApp = () => {
 	 );
  }
 
+ ////React Hooks
+ function MyColor() {
+ 	const [color, setColor] = useState("red");
+	return (
+		<>
+			<h1>My color is {color}!</h1>
+			<button type="button" onClick={() => setColor("blue")}>Blue</button>
+			<button type="button" onClick={() => setColor("red")}>Red</button>
+			<button type="button" onClick={() => setColor("grey")}>Grey</button>
+			<button type="button" onClick={() => setColor("orange")}>Orange</button>
+			<button type="button" onClick={() => setColor("green")}>Green</button>
+		</>
+	);
+ }
+
+
 //This comment line is to edit the file in 'html-skeleton' branch.
 // This comment is from Git Pull Branch from Github..
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<HeaderSass />);
+root.render(<MyColor />);
 
 
 
