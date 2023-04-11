@@ -218,7 +218,6 @@ function MyForm() {
 		setMyCrypto((values) => ({...values, [name]: value}));
 		// setTextarea(event.target.value);
 		// setMyCrypto(event.target.value);
-
 	}
 
 	const handleSubmit = (event) => {
@@ -345,11 +344,43 @@ const TodosApp = () => {
 	);
  }
 
+ //React useState Hook
+ function FavoriteCar() {
+ 	// const [color, setColor] = useState("green");
+	// const [brand, setBrand] = useState("Ford");
+	// const [year, setYear] = useState("2022");
+	// const [model, setModel] = useState("Mustang");
+	const [car, setCar] = useState({
+		brand: "Ford",
+		color: "green",
+		model: "Mustang",
+		year: "2022"
+	});
+
+	const updateColor = () => {
+		setCar((prevState) => {
+			return {
+				...prevState,
+				color: "blue",
+			};
+		});
+	}
+
+	return (
+		<>
+			<h1>Dream Car</h1>
+			<p>It is {car.color} {car.brand} {car.model} from {car.year}.</p>
+			<button type="button" onClick={updateColor}>Blue</button>
+		</>
+	);
+
+ }
+
 
 //This comment line is to edit the file in 'html-skeleton' branch.
 // This comment is from Git Pull Branch from Github..
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<MyColor />);
+root.render(<FavoriteCar />);
 
 
 
