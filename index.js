@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { name, age } from './person.js';
 import message from './message.js';
 import Boat from './Boat.js';
@@ -373,14 +373,45 @@ const TodosApp = () => {
 			<button type="button" onClick={updateColor}>Blue</button>
 		</>
 	);
-
  }
+
+ //React useEffect Hook
+function Timer() {
+		const [count, setCount] = useState(0);
+
+		useEffect(() => {
+			let timer = setTimeout(() => {
+				setCount((c) => c + 1);
+			});
+			return () => clearTimeout(timer);
+		}, []);
+
+		return <h1>I've rendered {count} times!</h1>;
+}
+
+function Counter() {
+	const [anothercount, setAnothercount] = useState(0);
+	const [count, setCount] = useState(0);
+	const [calculation, setCalculation] = useState(0);
+
+	useEffect(() => {
+		setCalculation(() => count * 4);
+	}, [count]);
+
+	return (
+		<>
+			<p>Count: {count}</p>
+			<button type='button' onClick={() => setCount((c) => c + 1)}>+</button>
+			<p>Calculation: {calculation}</p>
+		</>
+	);
+}
 
 
 //This comment line is to edit the file in 'html-skeleton' branch.
 // This comment is from Git Pull Branch from Github..
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<FavoriteCar />);
+root.render(<Timer />);
 
 
 
