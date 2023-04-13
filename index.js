@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createContext, useContext } from 'react';
 import { name, age } from './person.js';
 import message from './message.js';
 import Boat from './Boat.js';
@@ -14,7 +14,7 @@ import Contact from "./pages/Contact";
 import NoPage from "./pages/NoPage";
 import Todos from "./Todos";
 import AiCar from './AiCar';
-import './my-sass.scss';
+//import './my-sass.scss';
 
 
 const myFirstElement = <h1>Hello React!</h1>;
@@ -407,11 +407,58 @@ function Counter() {
 	);
 }
 
+//React useContext Hook
+const UserContext = createContext();
+
+function Component1() {
+	const [user, setUser] = useState("John Doe");
+
+	return (
+		<UserContext.Provider value={user}>
+			<h1>{`Hello ${user}!`}</h1>
+			<Component2 />
+		</UserContext.Provider>
+	);
+}
+function Component2() {
+	return (
+		<>
+			<h1>Component 2</h1>
+			<Component3 />
+		</>
+	);
+}
+function Component3() {
+	return (
+		<>
+			<h1>Component 3</h1>
+			<Component4 />
+		</>
+	);
+}
+function Component4() {
+	return (
+		<>
+			<h1>Component 4</h1>
+			<Component5 />
+		</>
+	);
+}
+function Component5() {
+	const user = useContext(UserContext);
+	return (
+		<>
+			<h1>Component 5</h1>
+			<h2>{`Hello ${user} again!`}</h2>
+		</>
+	);
+}
+
 
 //This comment line is to edit the file in 'html-skeleton' branch.
 // This comment is from Git Pull Branch from Github..
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Timer />);
+root.render(<Component1 />);
 
 
 
