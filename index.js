@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { useState, useEffect, createContext, useContext } from 'react';
+import { useState, useEffect, createContext, useContext, useRef } from 'react';
 import { name, age } from './person.js';
 import message from './message.js';
 import Boat from './Boat.js';
@@ -454,11 +454,46 @@ function Component5() {
 	);
 }
 
+//React useRef Hook
+function AppRef() {
+	const [inputValue, setInputValue] = useState("");
+	const count = useRef(0);
+	console.log(count);
+	const inputElement = useRef();
+	const prevInputValue = useRef("");
+	console.log(prevInputValue);
+
+	const focusInput = () => {
+		inputElement.current.focus();
+		console.log(inputElement.current);
+	}
+
+	useEffect(() => {
+		count.current++;
+		prevInputValue.current = inputValue;
+	}, [inputValue]);
+
+	return (
+		<>
+			<input
+				type="text"
+				value={inputValue}
+				ref={inputElement}
+				onChange={(e) => setInputValue(e.target.value)}
+			/>
+			<button type="button" onClick={focusInput}>Focus Input</button>
+			<h1>Render Count: {count.current}</h1>
+			<h2>Current Value: {inputValue}</h2>
+			<h2>Previous Value: {prevInputValue.current}</h2>
+		</>
+	);
+}
+
 
 //This comment line is to edit the file in 'html-skeleton' branch.
 // This comment is from Git Pull Branch from Github..
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Component1 />);
+root.render(<AppRef />);
 
 
 
