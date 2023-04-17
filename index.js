@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { useState, useEffect, createContext, useContext, useRef } from 'react';
+import { useState, useEffect, createContext, useContext, useRef, useReducer } from 'react';
 import { name, age } from './person.js';
 import message from './message.js';
 import Boat from './Boat.js';
@@ -458,10 +458,10 @@ function Component5() {
 function AppRef() {
 	const [inputValue, setInputValue] = useState("");
 	const count = useRef(0);
-	console.log(count);
+	console.log("Render counter: " + count.current);
 	const inputElement = useRef();
 	const prevInputValue = useRef("");
-	console.log(prevInputValue);
+
 
 	const focusInput = () => {
 		inputElement.current.focus();
@@ -472,6 +472,8 @@ function AppRef() {
 		count.current++;
 		prevInputValue.current = inputValue;
 	}, [inputValue]);
+
+	console.log("prevInputValue: " + prevInputValue.current);
 
 	return (
 		<>
@@ -489,11 +491,67 @@ function AppRef() {
 	);
 }
 
+// useReducer Hook
+const initialTodos = [
+	{
+		id: 1,
+		title: "Breakfast",
+		complete: false
+	},
+	{
+		id: 2,
+		title: "Clean",
+		complete: false
+	},
+	{
+		id: 3,
+		title: "Dropshipping",
+		complete: false
+	}
+];
+
+const reducer = (state, action) => {
+	switch (action.type) {
+		case "COMPLETE":
+			const newState = state.map((todo) => {
+				if (todo.id === action.id) {
+					return { ...todo, complete: !todo.complete};
+				} else {
+					return todo;
+				}
+			});
+			console.log(`Action ${action.title} completed. New status: ${action.type}`);
+			return newState;
+		default:
+			return state;
+	}
+}
+
+function TodosReducer() {
+	const [todos, dispatch] = useReducer(reducer, initialTodos);
+
+	const handleComplete = (todo) => {
+		dispatch({ type: "COMPLETE", id: todo.id, title: todo.title });
+	};
+
+	return (
+		<>
+			{todos.map((todo) => (
+				<div key={todo.id}>
+					<label>
+						<input type="checkbox" checked={todo.complete} onChange={() => handleComplete(todo)} />
+						{todo.title}
+					</label>
+				</div>
+			))}
+		</>
+	);
+}
 
 //This comment line is to edit the file in 'html-skeleton' branch.
 // This comment is from Git Pull Branch from Github..
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<AppRef />);
+root.render(<TodosReducer />);
 
 
 
