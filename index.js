@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { useState, useEffect, createContext, useContext, useRef, useReducer } from 'react';
+import { useState, useEffect, createContext, useContext, useRef, useReducer, useCallback } from 'react';
 import { name, age } from './person.js';
 import message from './message.js';
 import Boat from './Boat.js';
@@ -15,6 +15,7 @@ import NoPage from "./pages/NoPage";
 import Todos from "./Todos";
 import AiCar from './AiCar';
 //import './my-sass.scss';
+import TodosCB from "./uCB-Todos";
 
 
 const myFirstElement = <h1>Hello React!</h1>;
@@ -548,10 +549,36 @@ function TodosReducer() {
 	);
 }
 
+//React useCallback Hook
+const AppCB = () => {
+	const [count, setCount] = useState(0);
+	const [todos, setTodos] = useState([]);
+
+	const increment = () => {
+		setCount((c) => c + 1);
+	};
+	const addTodo = useCallback(() => {
+		setTodos((t) => [...t, "New Todo"]);
+	}, [todos]);
+
+	return (
+		<>
+			<ul>
+				<TodosCB todos={todos} addTodo={addTodo} />
+			</ul>
+			<hr />
+			<div>
+				Count: {count}
+				<button onClick={increment}>+</button>
+			</div>
+		</>
+	);
+}
+
 //This comment line is to edit the file in 'html-skeleton' branch.
 // This comment is from Git Pull Branch from Github..
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<TodosReducer />);
+root.render(<AppCB />);
 
 
 
