@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { useState, useEffect, createContext, useContext, useRef, useReducer, useCallback } from 'react';
+import { useState, useEffect, createContext, useContext } from 'react';
+import { useRef, useReducer, useCallback, useMemo } from 'react';
 import { name, age } from './person.js';
 import message from './message.js';
 import Boat from './Boat.js';
@@ -575,10 +576,53 @@ const AppCB = () => {
 	);
 }
 
+//React useMemo Hook
+const AppMemo = () => {
+	const [count, setCount] = useState(0);
+	const [todos, setTodos] = useState([]);
+	const calculation = useMemo(() => expensiveCalculation(count), [count]);
+
+	const increment = () => {
+		setCount(c => c + 1);
+	};
+	const addTodo = () => {
+		setTodos(t => [...t, "New Todo"]);
+	};
+
+	return (
+		<div>
+			<div>
+				<h2>TO-DO List</h2>
+				<ul>
+					{todos.map((todo, index) => {
+						return <li key={index}>todo</li>;
+					})}
+				</ul>
+				<button type='button' onClick={addTodo}>Add Todo</button>
+			</div>
+			<hr />
+			<div>
+				Count: {count}
+				<button type='button' onClick={increment}>+</button>
+				<h2>Expensive Calculation</h2>
+				{calculation}
+			</div>
+		</div>
+	);
+};
+
+const expensiveCalculation = (num) => {
+	console.log("Calculationg...");
+	for (let i = 0; i < 1000000000; i++) {
+		num++;
+	}
+	return num;
+};
+
 //This comment line is to edit the file in 'html-skeleton' branch.
 // This comment is from Git Pull Branch from Github..
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<AppCB />);
+root.render(<AppMemo />);
 
 
 
