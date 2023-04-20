@@ -17,6 +17,7 @@ import Todos from "./Todos";
 import AiCar from './AiCar';
 //import './my-sass.scss';
 import TodosCB from "./uCB-Todos";
+import useFetch from "./useFetch";
 
 
 const myFirstElement = <h1>Hello React!</h1>;
@@ -619,10 +620,25 @@ const expensiveCalculation = (num) => {
 	return num;
 };
 
+// React Custom Hooks
+const HomeCustome = () => {
+	const [data] = useFetch("https://jsonplaceholder.typicode.com/todos");
+
+	return (
+		<>
+			<ul>
+				{data && data.map((item) => {
+					return <li key={item.id}>{item.title}</li>;
+				})}
+			</ul>
+		</>
+	);
+}
+
 //This comment line is to edit the file in 'html-skeleton' branch.
 // This comment is from Git Pull Branch from Github..
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<AppMemo />);
+root.render(<HomeCustome />);
 
 
 
