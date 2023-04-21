@@ -12,5 +12,3 @@ Today React Lists have been taken.
 This line is added in update-readme branch to push it to Github.
 
 This line is added to push the changes with SSH.
-
-Adding plines in README.md
