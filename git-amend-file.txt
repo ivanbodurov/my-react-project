@@ -1,0 +1,1 @@
+This file has been amended by git commit --amend command..
